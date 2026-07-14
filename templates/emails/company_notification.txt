@@ -1,0 +1,27 @@
+{{ company_name }} — New B2B Request Received
+============================================================
+
+REQUEST DETAILS
+----------------
+Request ID   : {{ request.get_short_id }}
+Product      : {{ request.product.name }}
+Quantity     : {{ request.quantity }}
+Status       : {{ request.get_status_display }}
+Submitted    : {{ request.created_at|date:"F j, Y H:i" }} UTC
+
+CLIENT INFORMATION
+------------------
+Company      : {{ request.company_name }}
+Contact      : {{ request.contact_person }}
+Email        : {{ request.email }}
+Phone        : {{ request.phone|default:"—" }}
+
+{% if request.message %}
+MESSAGE
+-------
+{{ request.message }}
+{% endif %}
+
+---
+Please log in to the Admin Panel to process this request.
+This is an automated notification from {{ company_name }} B2B Sales Platform.

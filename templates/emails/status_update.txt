@@ -1,0 +1,31 @@
+Dear {{ request.contact_person }},
+
+Your B2B request has been updated.
+
+CURRENT STATUS: {{ status_display|upper }}
+
+REQUEST REFERENCE
+-----------------
+Reference ID : {{ request.get_short_id }}
+Product      : {{ request.product.name }}
+Company      : {{ request.company_name }}
+Quantity     : {{ request.quantity }}
+
+{% if request.status == 'processing' %}
+Your request is currently being processed. We will be in touch with details shortly.
+{% elif request.status == 'completed' %}
+Your request has been completed. Thank you for choosing {{ company_name }}.
+{% elif request.status == 'rejected' %}
+We regret that we are unable to fulfill this request at this time. Please contact us directly for more information.
+{% else %}
+Your request is in our system and under review.
+{% endif %}
+
+For questions, contact: sales@yourcompany.com
+Please reference ID: {{ request.get_short_id }}
+
+---
+Kind regards,
+{{ company_name }} Sales Team
+
+This is an automated notification. Please do not reply.

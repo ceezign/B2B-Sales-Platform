@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Confirmation</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+  .wrapper { max-width: 600px; margin: 40px auto; background: #ffffff; border-radius: 4px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .header { background: #0D2B4E; padding: 40px; text-align: center; }
+  .header .icon { font-size: 36px; color: #C9A84C; display: block; margin-bottom: 12px; }
+  .header h1 { color: #ffffff; font-size: 22px; margin: 0 0 6px; }
+  .header p { color: #a0b4c8; font-size: 13px; margin: 0; }
+  .body { padding: 40px; }
+  .greeting { font-size: 18px; color: #0D2B4E; font-weight: 600; margin-bottom: 12px; }
+  .intro { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 30px; }
+  .ref-box { background: #f0f5ff; border: 2px solid #0D2B4E; border-radius: 6px; padding: 24px; text-align: center; margin-bottom: 30px; }
+  .ref-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #666; margin-bottom: 8px; }
+  .ref-id { font-size: 28px; font-weight: 700; color: #0D2B4E; letter-spacing: 4px; }
+  .section-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #C9A84C; margin: 0 0 12px; }
+  .info-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+  .info-table tr td { padding: 10px 14px; font-size: 14px; }
+  .info-table tr:nth-child(even) td { background: #f8f9fa; }
+  .info-table .label { color: #666; font-weight: 600; width: 40%; }
+  .info-table .value { color: #1a1a1a; }
+  .status-badge { display: inline-block; padding: 4px 12px; background: #FFF8E7; border: 1px solid #C9A84C; color: #8B6914; border-radius: 20px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .closing { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 20px; }
+  .signature { font-size: 14px; color: #333; }
+  .footer { background: #f8f9fa; padding: 20px 40px; text-align: center; border-top: 1px solid #eee; }
+  .footer p { font-size: 12px; color: #999; margin: 4px 0; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="header">
+    <span class="icon">◆</span>
+    <h1>Request Received</h1>
+    <p>{{ company_name }} — B2B Sales Portal</p>
+  </div>
+  <div class="body">
+    <p class="greeting">Dear {{ request.contact_person }},</p>
+    <p class="intro">
+      Thank you for submitting your enquiry through our B2B Sales Portal. We have successfully received your request and our sales team will review it promptly. Please retain the reference number below for your records.
+    </p>
+
+    <div class="ref-box">
+      <div class="ref-label">Your Reference ID</div>
+      <div class="ref-id">{{ request.get_short_id }}</div>
+    </div>
+
+    <p class="section-title">Request Summary</p>
+    <table class="info-table">
+      <tr><td class="label">Product</td><td class="value">{{ request.product.name }}</td></tr>
+      <tr><td class="label">Quantity Requested</td><td class="value">{{ request.quantity }}</td></tr>
+      <tr><td class="label">Company</td><td class="value">{{ request.company_name }}</td></tr>
+      <tr><td class="label">Current Status</td><td class="value"><span class="status-badge">Pending Review</span></td></tr>
+    </table>
+
+    <p class="closing">
+      Our team typically responds within <strong>1-2 business day</strong>. You will receive an automatic email notification whenever the status of your request is updated. If you have any urgent queries, please contact us at <a href="mailto:sales@jiggythegreat.com" style="color: #0D2B4E;">sales@yourcompany.com</a>.
+    </p>
+
+    <p class="signature">
+      Kind regards,<br>
+      <strong>{{ company_name }} Sales Team</strong>
+    </p>
+  </div>
+  <div class="footer">
+    <p>{{ company_name }} — B2B Sales Platform</p>
+    <p>This is an automated confirmation. Please do not reply to this email.</p>
+  </div>
+</div>
+</body>
+</html>

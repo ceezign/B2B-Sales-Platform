@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-badge">Exclusive B2B Channel</div>
+        <h1 class="hero-title">Our Product Catalogue</h1>
+        <p class="hero-subtitle">Browse our complete range of professional-grade products and submit a request for pricing and availability.</p>
+        <div class="hero-divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">◆</span>
+            <span class="divider-line"></span>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTS SECTION -->
+<section class="products-section">
+    <div class="container">
+
+        {% if products %}
+        <div class="product-grid">
+            {% for product in products %}
+            <article class="product-card">
+                <a href="{% url 'product_detail' product.slug %}" class="card-link">
+                    <div class="card-image-wrap">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-image">
+                        {% else %}
+                            <div class="card-image-placeholder">
+                                <span class="placeholder-icon">◆</span>
+                            </div>
+                        {% endif %}
+                        <div class="card-overlay">
+                            <span class="overlay-text">View Details →</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">{{ product.name }}</h2>
+                        <p class="card-excerpt">{{ product.description|truncatewords:20 }}</p>
+                        <span class="card-cta">Request Quote <span class="arrow">→</span></span>
+                    </div>
+                </a>
+            </article>
+            {% endfor %}
+        </div>
+
+        {% else %}
+        <div class="empty-state">
+            <div class="empty-icon">◆</div>
+            <h2 class="empty-title">No Products Available</h2>
+            <p class="empty-text">Our catalogue is being updated. Please check back soon or contact us directly.</p>
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">How It Works</h2>
+            <div class="section-divider">
+                <span class="divider-line"></span>
+                <span class="divider-icon">◆</span>
+                <span class="divider-line"></span>
+            </div>
+        </div>
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-number">01</div>
+                <h3 class="step-title">Browse Catalogue</h3>
+                <p class="step-text">Explore our full range of products and their detailed specifications.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">02</div>
+                <h3 class="step-title">Submit Request</h3>
+                <p class="step-text">Fill in your company details and required quantity on any product page.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">03</div>
+                <h3 class="step-title">Receive Confirmation</h3>
+                <p class="step-text">Get an instant confirmation email with your unique reference ID.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">04</div>
+                <h3 class="step-title">We Follow Up</h3>
+                <p class="step-text">Our sales team reviews and responds with pricing and availability.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

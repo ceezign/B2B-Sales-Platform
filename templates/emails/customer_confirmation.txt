@@ -1,0 +1,27 @@
+Dear {{ request.contact_person }},
+
+Thank you for your enquiry with {{ company_name }}. We have received your request and our team will respond shortly.
+
+YOUR REFERENCE ID
+-----------------
+{{ request.get_short_id }}
+
+Please keep this ID for your records.
+
+REQUEST SUMMARY
+---------------
+Product          : {{ request.product.name }}
+Quantity         : {{ request.quantity }}
+Company          : {{ request.company_name }}
+Status           : Pending Review
+
+Our team typically responds within 1 business day.
+You will receive an email notification when your request status is updated.
+
+For urgent queries, please contact: sales@yourcompany.com
+
+---
+Kind regards,
+{{ company_name }} Sales Team
+
+This is an automated confirmation. Please do not reply to this email.

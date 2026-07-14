@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="{% url 'product_list' %}" class="breadcrumb-link">Products</a>
+            <span class="breadcrumb-sep">›</span>
+            <span class="breadcrumb-current">{{ product.name }}</span>
+        </nav>
+    </div>
+</div>
+
+<!-- PRODUCT DETAIL -->
+<section class="product-detail-section">
+    <div class="container">
+        <div class="detail-grid">
+
+            <!-- LEFT: Product Info -->
+            <div class="detail-left">
+                <div class="product-image-wrap">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-main-image">
+                    {% else %}
+                        <div class="product-image-placeholder">
+                            <span class="placeholder-icon-lg">◆</span>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="product-info">
+                    <div class="product-badge">B2B Product</div>
+                    <h1 class="product-title">{{ product.name }}</h1>
+
+                    <div class="info-divider">
+                        <span class="divider-line"></span>
+                        <span class="divider-icon">◆</span>
+                        <span class="divider-line"></span>
+                    </div>
+
+                    <div class="product-description">
+                        <h3 class="info-label">Description</h3>
+                        <p class="info-text">{{ product.description }}</p>
+                    </div>
+
+                    {% if product.specifications %}
+                    <div class="product-specifications">
+                        <h3 class="info-label">Specifications</h3>
+                        <div class="spec-block">{{ product.specifications|linebreaks }}</div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- RIGHT: Request Form -->
+            <div class="detail-right">
+                <div class="request-form-card">
+                    <div class="form-header">
+                        <span class="form-badge">Request a Quote</span>
+                        <h2 class="form-title">Submit Your Enquiry</h2>
+                        <p class="form-subtitle">Complete the form below. Our team will respond within 1 business day.</p>
+                    </div>
+
+                    <form method="post" class="request-form" novalidate>
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                        <div class="form-errors">
+                            {% for error in form.non_field_errors %}
+                            <p class="error-text">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="{{ form.company_name.id_for_label }}">
+                                    {{ form.company_name.label }} <span class="required">*</span>
+                                </label>
+                                {{ form.company_name }}
+                                {% if form.company_name.errors %}
+                                <span class="field-error">{{ form.company_name.errors.0 }}</span>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="{{ form.contact_person.id_for_label }}">
+                                    {{ form.contact_person.label }} <span class="required">*</span>
+                                </label>
+                                {{ form.contact_person }}
+                                {% if form.contact_person.errors %}
+                                <span class="field-error">{{ form.contact_person.errors.0 }}</span>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="{{ form.email.id_for_label }}">
+                                    {{ form.email.label }} <span class="required">*</span>
+                                </label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                <span class="field-error">{{ form.email.errors.0 }}</span>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="{{ form.phone.id_for_label }}">
+                                    {{ form.phone.label }}
+                                </label>
+                                {{ form.phone }}
+                                {% if form.phone.errors %}
+                                <span class="field-error">{{ form.phone.errors.0 }}</span>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group form-group--full">
+                                <label class="form-label" for="{{ form.quantity.id_for_label }}">
+                                    {{ form.quantity.label }} <span class="required">*</span>
+                                </label>
+                                {{ form.quantity }}
+                                {% if form.quantity.errors %}
+                                <span class="field-error">{{ form.quantity.errors.0 }}</span>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group form-group--full">
+                                <label class="form-label" for="{{ form.message.id_for_label }}">
+                                    {{ form.message.label }}
+                                </label>
+                                {{ form.message }}
+                                {% if form.message.errors %}
+                                <span class="field-error">{{ form.message.errors.0 }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-footer">
+                            <p class="form-note">
+                                <span class="required">*</span> Required fields. By submitting you agree to be contacted by our sales team.
+                            </p>
+                            <button type="submit" class="submit-btn">
+                                <span class="btn-text">Submit Request</span>
+                                <span class="btn-icon">→</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
