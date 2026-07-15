@@ -8,6 +8,7 @@ SECRET_KEY = 'django-insecure-change-this-in-production-use-env-variable'
 DEBUG = True
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
+CSRF_TRUSTED_ORIGINS = ['https://b2b-sales-platform-production.up.railway.app']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
