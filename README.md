@@ -64,6 +64,16 @@ Admin adds product → Customer browses catalogue → Submits quote form
 ```
 
 ---
+## screenshot
+![home view screenshot ](./static/images/home%20view.jpg)
+![main view screenshot ](./static/images/section%20view.jpg)
+![Product Enquiry screenshot ](./static/images/product%20description%20and%20enquiry%20desltop.jpg)
+![confirmation pop screenshot ](./static/images/confirmation%20pop%20.jpg)
+![Email Confirmation screenshot ](./static/images/email%20confirmation%20.jpg)
+
+
+
+---
 
 ## Admin Panel
 
