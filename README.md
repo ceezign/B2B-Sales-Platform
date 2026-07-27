@@ -133,3 +133,16 @@ b2b_platform/
 - [ ] Switch to PostgreSQL
 - [ ] Run `collectstatic`
 - [ ] Gunicorn + Nginx + SSL certificate
+
+## 👨‍💻 Author
+
+Atunde Toheeb Ayomide (Jiggy)  
+📍 Lagos, Nigeria  
+📧 [atundetoheeb1@gmail.com](mailto:atundetoheeb1@gmail.com)  
+🔗 [GitHub](https://github.com/ceezign) | [LinkedIn](https://www.linkedin.com/in/atunde-toheeb-551826313)
+
+---
+
+## 🪪 License
+
+This project is open source and available under the MIT License.
