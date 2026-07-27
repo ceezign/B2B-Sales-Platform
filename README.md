@@ -134,6 +134,8 @@ b2b_platform/
 - [ ] Run `collectstatic`
 - [ ] Gunicorn + Nginx + SSL certificate
 
+🔗 Project live on Railway: [https://b2b-sales-platform-production.up.railway.app/](#)
+
 ## 👨‍💻 Author
 
 Atunde Toheeb Ayomide (Jiggy)  
